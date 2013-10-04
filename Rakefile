@@ -12,7 +12,8 @@ dotfile_tasks = Dotfiles.files.collect do |dotfile|
 
 	desc "Deploy #{dotfile}"
 	task dotfile_task_name do
-		Dotfiles.deploy( dotfile )
+		overwrite = ENV["OVERWRITE"] # will either be nil or something
+		Dotfiles.deploy( dotfile, overwrite )
 	end
 
 	dotfile_task_name

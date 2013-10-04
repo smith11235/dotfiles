@@ -10,18 +10,15 @@ module Dotfiles
 		ENV["HOME"]
 	end
 
-	def self.deploy( dotfile )
+	def self.deploy( dotfile, overwrite )
 		source_path = File.expand_path( "../#{dotfile}", __FILE__ ) 
 		target_path = File.join( Dotfiles.home, "#{dotfile}" ) 
 
-		overwrite_variable = "OVERWRITE_DOTFILES"
-		overwrite_password = "yes" 
-		overwrite_confirmed = ENV["OVERWRITE_DOTFILES"].to_s =~ /^#{overwrite_password}$/
 		preexisting_file = File.file? target_path
 
-		if preexisting_file && ! overwrite_confirmed
+		if preexisting_file && ! overwrite
 			puts "Warning: target dotfile exists: #{target_path}".red
-			puts "Overwrite by running with #{overwrite_variable}=#{overwrite_confirmed}"
+			puts "Overwrite by adding OVERWRITE=1"
 		else
 			FileUtils.cp source_path, target_path
 			puts "#{target_path} deployed".green
