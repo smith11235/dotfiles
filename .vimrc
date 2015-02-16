@@ -1,15 +1,15 @@
-" set our tabs to four spaces
-set ts=2
-
-set number
 " turn syntax highlighting on by default
 syntax on
+" turn on line numbering
+set number
 
 " set auto-indenting on for programming
 set ai
 set autoindent
 set cindent
+set expandtab
 set shiftwidth=2
+set ts=2
 
 " turn off compatibility with the old vi
 set nocompatible
@@ -35,5 +35,8 @@ if has("autocmd")
   filetype indent on
 endif
 
+" Map tab navigation to mirror cursor navigation
+" tab left, similar to 'h: move-let'
 nmap <C-h> :tabprevious <cr>
+" tab right, similar to 'h: move-let'
 nmap <C-l> :tabnext <cr>
