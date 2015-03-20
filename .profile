@@ -13,5 +13,6 @@ alias tls="tmux ls"
 # git push origin [current branch]
 alias gs="git status"
 alias gc="git commit" # -a?m? "message with m arg"
+alias gd="git diff"
 alias gp="git push origin \`git status | grep 'On branch' | sed 's/On branch //'\`"
 
