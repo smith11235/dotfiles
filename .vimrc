@@ -3,6 +3,10 @@ syntax on
 " turn on line numbering
 set number
 
+" do NOT put a carriage return at the end of the last line! if you are programming
+" for the web the default will cause http headers to be sent. that's bad.
+set binary noeol
+
 " set auto-indenting on for programming
 set ai
 set autoindent
@@ -22,10 +26,6 @@ set nohlsearch
 
 " automatically show matching brackets. works like it does in bbedit.
 set showmatch
-
-" do NOT put a carriage return at the end of the last line! if you are programming
-" for the web the default will cause http headers to be sent. that's bad.
-set binary noeol
 
 " make that backspace key work the way it should
 set backspace=indent,eol,start
