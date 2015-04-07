@@ -1,11 +1,16 @@
 require 'fileutils'
 require 'yaml'
 
-desc "Setup all config files and profiles"
+desc "Setup .vimrc and user profile"
 task :deploy_dotfiles do
   overwrite = ENV["OVERWRITE"] # will either be nil or something
 
   FileUtils.cp ".vimrc", "~/.vimrc"
+
+  source_profile_path = File.expand_path("../profile", __FILE__)
+  target_path = File.join(ENV["HOME"], "dotfiles_profile")
+  cmd = "ln -s #{source_profile_path} #{target_path}"
+  raise "Unable to create symlink for profile: #{cmd}" unless system(cmd)
 
   possible_profile_files = %w(
     .profile
@@ -15,14 +20,14 @@ task :deploy_dotfiles do
     .zshrc
   )
 
-  profile_files.each do |profile_file|
-		profile_file = File.join ENV["HOME"], profile_file
+  possible_profile_files.each do |profile_file|
+		profile_file = File.join(ENV["HOME"], profile_file)
     next unless File.file? profile_file
-		puts "Adding profile to #{profile_file}"
-    cmd ="echo 'source ~/git/dotfiles/.profile' >> #{profile_file}"
-    raise "Could not add to #{profile_file}" unless system(cmd)
+		puts "Adding profile call to #{profile_file}"
+    cmd ="echo 'source ~/dotfiles_profile' >> #{profile_file}"
+    raise "Could not configure profile: #{cmd}" unless system(cmd)
   end
 
-  puts "Now run: $ source ~/git/dotfiles/.profile"
+  puts "Now relogin or run: $ source ~/dotfiles_profile"
 end
 
