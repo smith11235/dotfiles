@@ -23,8 +23,10 @@ My standard operating procedure for any ruby/rails project.
 Add these files to your project repo, and execute:
 
 ```
+  # 1 time only, or to refresh your build
   source ./build_rvm_environment
 
+  # each time you login
   source ./load_rvm_environment
   which ruby
   spring rails server # no need for bundle exec

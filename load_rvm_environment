@@ -1,0 +1,4 @@
+# Set your project specific rvm install
+export rvm_path=`pwd`/.rvm
+# Load the environment!
+source $rvm_path/scripts/rvm

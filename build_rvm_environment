@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# project specific rvm install
+export rvm_path=`pwd`/.rvm 
+
+# clear out prior install
+rm -rf $rvm_path 
+
+# Install RVM
+gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+curl -sSL https://get.rvm.io | bash -s stable 
+
+# Load the rvm environment
+source $rvm_path/scripts/rvm
+
+# Install Ruby 2.1.4, bundler, and anything in a possible Gemfile
+rvm install 2.1.4
+rvm use 2.1.4 --default
+gem install bundler
+
+if test -f "Gemfile"; then bundle install; fi
