@@ -1,18 +1,13 @@
 require 'fileutils'
 require 'yaml'
 
-require File.expand_path( "../dotfiles.rb", __FILE__ )
-
-# create a task that deploys all the files
 desc "Setup all config files and profiles"
 task :deploy_dotfiles do
   overwrite = ENV["OVERWRITE"] # will either be nil or something
 
-  # copy .vimrc and overrite
-  Dotfiles.deploy(".vimrc", overwrite)
+  FileUtils.cp ".vimrc", "~/.vimrc"
 
-  # add to all profile files a source call to git/dotfiles/.profile
-  profile_files = %w(
+  possible_profile_files = %w(
     .profile
     .bash_profile
     .bashrc

@@ -1,8 +1,12 @@
+#!/bin/bash
+
 export GIT_EDITOR=vim
 mesg n
 
 # easily reload the profile if you ever edit it
-alias profile="source ~/git/dotfiles/.profile"
+alias profile="source ~/dotfiles_profile"
+
+# if youre still using bundle...
 alias be="bundle exec"
 
 # tmux shortcuts
