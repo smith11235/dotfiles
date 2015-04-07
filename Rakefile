@@ -3,12 +3,13 @@ require 'yaml'
 
 desc "Setup .vimrc and user profile"
 task :deploy_dotfiles do
-  overwrite = ENV["OVERWRITE"] # will either be nil or something
+  home = ENV["HOME"]
 
-  FileUtils.cp ".vimrc", "~/.vimrc"
+  FileUtils.cp ".vimrc", File.join(home, ".vimrc")
 
   source_profile_path = File.expand_path("../profile", __FILE__)
-  target_path = File.join(ENV["HOME"], "dotfiles_profile")
+  target_path = File.join(home, "dotfiles_profile")
+
   cmd = "ln -s #{source_profile_path} #{target_path}"
   raise "Unable to create symlink for profile: #{cmd}" unless system(cmd)
 
@@ -21,7 +22,7 @@ task :deploy_dotfiles do
   )
 
   possible_profile_files.each do |profile_file|
-		profile_file = File.join(ENV["HOME"], profile_file)
+		profile_file = File.join(home, profile_file)
     next unless File.file? profile_file
 		puts "Adding profile call to #{profile_file}"
     cmd ="echo 'source ~/dotfiles_profile' >> #{profile_file}"
