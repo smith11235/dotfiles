@@ -2,6 +2,7 @@
 
 # project specific rvm install
 export rvm_path=`pwd`/.rvm 
+export rvm_ignore_dotfiles=yes
 
 # clear out prior install
 rm -rf $rvm_path 
