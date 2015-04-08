@@ -2,3 +2,4 @@
 export rvm_path=`pwd`/.rvm
 # Load the environment!
 source $rvm_path/scripts/rvm
+export PATH="$PATH:$rvm_path/bin" # Add RVM to PATH for scripting
