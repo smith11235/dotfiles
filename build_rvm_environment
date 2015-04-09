@@ -16,7 +16,7 @@ source $rvm_path/scripts/rvm
 
 # Install Ruby 2.1.4, bundler, and anything in a possible Gemfile
 rvm install 2.1.4
-rvm use 2.1.4 --default
+rvm use 2.1.4
 gem install bundler
 
 if test -f "Gemfile"; then bundle install; fi
