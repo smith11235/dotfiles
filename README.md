@@ -18,16 +18,18 @@ Use it.  Love it.
 Ruby
 ----
 
-My standard operating procedure for any ruby/rails project.
+For any ruby/rails project, from your root directory make and use a project specific rvm/ruby install.
 
-Add these files to your project repo, and execute:
+### First Time Install
 
+```bash
+  cd my_project
+  build_rvm
 ```
-  # 1 time only, or to refresh your build
-  source ./build_rvm_environment
 
-  # each time you login
-  source ./load_rvm_environment
-  which ruby
-  spring rails server # no need for bundle exec
+### On Each Login
+
+```bash
+  cd my_project
+  load_rvm
 ```
