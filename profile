@@ -5,6 +5,8 @@ mesg n
 
 # easily reload the profile if you ever edit it
 alias profile="source ~/dotfiles_profile"
+alias load_rvm="source ~/dotfiles_load_rvm_environment"
+alias build_rvm="source ~/dotfiles_build_rvm_environment"
 
 # if youre still using bundle...
 alias be="bundle exec"
