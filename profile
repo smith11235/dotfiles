@@ -22,4 +22,5 @@ alias gc="git commit" # -a?m? "message with m arg"
 alias gd="git diff"
 alias gp="git push origin \`git status | grep 'On branch' | sed 's/On branch //'\`"
 alias gpull="git pull origin \`git status | grep 'On branch' | sed 's/On branch //'\`"
+alias gb="git branch"
 
