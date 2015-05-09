@@ -1,38 +1,66 @@
 require 'fileutils'
 require 'yaml'
 
-desc "Setup .vimrc and user profile"
-task :deploy_dotfiles do
-  home = ENV["HOME"]
-
-  FileUtils.cp ".vimrc", File.join(home, ".vimrc")
-
-  files = %w(profile load_rvm_environment build_rvm_environment)
-  files.each do |file|
-    source_profile_path = File.expand_path("../#{file}", __FILE__)
-    target_path = File.join(home, "dotfiles_#{file}")
-    unless File.file? target_path
-      cmd = "ln -s #{source_profile_path} #{target_path}"
-      raise "Unable to create symlink for profile: #{cmd}" unless system(cmd)
+class Dotfiles
+  def initialize
+    %(.vimrc .gemrc).each do |file_name|
+      symlink(file_name, file_name)
     end
+
+    files = %w(profile load_rvm_environment build_rvm_environment)
+    files.each do |file|
+      symlink(source_path, "dotfiles_#{file}")
+    end
+
+    extend_profile_files
   end
 
-  possible_profile_files = %w(
+  private
+
+  def home
+    @home ||= ENV["HOME"]
+  end
+
+  def common_profile_files
+    %w(
     .profile
     .bash_profile
     .bashrc
     .zlogin
     .zshrc
-  )
-
-  possible_profile_files.each do |profile_file|
-		profile_file = File.join(home, profile_file)
-    next unless File.file? profile_file
-		puts "Adding profile call to #{profile_file}"
-    cmd ="echo 'source ~/dotfiles_profile' >> #{profile_file}"
-    raise "Could not configure profile: #{cmd}" unless system(cmd)
+    )
   end
 
-  puts "Now relogin or run: $ source ~/dotfiles_profile"
+  def extend_profile_files
+    common_profile_files.each do |profile_file_name|
+      profile_file = home_file(profile_file_name)
+      next unless File.file? profile_file
+      cmd ="echo 'source ~/dotfiles_profile' >> #{profile_file}"
+      raise "Could not configure profile: #{cmd}" unless system(cmd)
+    end
+
+    puts "Now relogin or run: $ source ~/dotfiles_profile"
+  end
+
+  def home_file(file_name)
+    File.join(home, file_name)
+  end
+
+  def source_file(file_name)
+    File.expand_path("../#{file_name}", __FILE__)
+  end
+
+  def symlink(source_file_name, target_file)
+    source_path = source_file(source_file_name)
+    target_path = home_file(target_file)
+
+    raise "Missing source file: #{source_path}" unless File.file? source_path
+    FileUtils.rm target_path if File.file? target_path
+    cmd = "ln -s #{source_path} #{target_path}"
+    raise "Unable to create symlink for profile: #{cmd}" unless system(cmd)
+  end
+
 end
+
+Dotfiles.new
 
