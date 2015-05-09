@@ -3,13 +3,13 @@ require 'yaml'
 
 class Dotfiles
   def initialize
-    %(.vimrc .gemrc).each do |file_name|
+    %w(.vimrc .gemrc).each do |file_name|
       symlink(file_name, file_name)
     end
 
     files = %w(profile load_rvm_environment build_rvm_environment)
     files.each do |file|
-      symlink(source_path, "dotfiles_#{file}")
+      symlink(file, "dotfiles_#{file}")
     end
 
     extend_profile_files
