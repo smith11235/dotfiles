@@ -79,5 +79,13 @@
 # Get Brickwork
   git clone git@github.com:brickworksoftware/brickwork_app.git
   build_rvm
+  vim config/application.yml
+  "
+  RDS_PORT: "5432"
+  RDS_DB_NAME: railsapp
+  RDS_USERNAME: railsapp
+  RDS_PASSWORD: 5aed99058d873716ebec7111b2e679dc
+  RDS_HOSTNAME: [rds endpoint from aws console]
+  "
  
 
