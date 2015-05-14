@@ -13,7 +13,7 @@
 # Update base packages for Ruby & Gem build
   sudo apt-get update
   sudo apt-get upgrade -y
-  export package_list='curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libgdbm-dev libncurses5-dev automake libtool bison libffi-dev mysql-client libmysqlclient-dev libmagickwand-dev phantomjs'
+  export package_list='curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libgdbm-dev libncurses5-dev automake libtool bison libffi-dev mysql-client libmysqlclient-dev libmagickwand-dev phantomjs libpq-dev'
   sudo apt-get install $package_list -y
 
 # Login Perms
