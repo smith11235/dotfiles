@@ -87,5 +87,7 @@
   RDS_PASSWORD: 5aed99058d873716ebec7111b2e679dc
   RDS_HOSTNAME: [rds endpoint from aws console]
   "
+  rake db:reset
+  
  
 
