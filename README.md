@@ -7,7 +7,7 @@ Setup
 ```
   git clone https://github.com/smith11235/dotfiles.git
   cd dotfiles
-  rake deploy_dotfiles
+  ruby dotfiles.rb
 ```
 
 Tmux
@@ -15,19 +15,59 @@ Tmux
 
 Use it.  Love it.
 
+#### New Project Session
+
+```
+  tn project_name # new session: tmux new -s
+```
+
+#### Tabs
+
+```
+  ctrl-b c        # new tab
+  ctrl-b n        # next tab
+  ctrl-b l        # last tab
+
+  # close a tab by 'exit'ing
+```
+
+#### Detach From Your Session
+
+And return later.  
+
+```
+  ctrl-b d        # detatch from session
+```
+
+It lets you leave your work and return as if you had never left.
+
+Lowering the context switch cost of taking a break or working on multiple projects.
+
+#### Reattaching
+
+```
+  tls              # list project sessions by name: tmux ls
+
+  tat project_name # attach to a session by name: tmux attach -t 
+```
+
 Ruby
 ----
 
-My standard operating procedure for any ruby/rails project.
+For any ruby/rails project, from your root directory make and use a project specific rvm/ruby install.
 
-Add these files to your project repo, and execute:
+### First Time Install
 
+```bash
+  cd my_project
+  tn my_project    # new tmux session in this directory
+  build_rvm        # build rvm, install Gemfile
 ```
-  # 1 time only, or to refresh your build
-  source ./build_rvm_environment
 
-  # each time you login
-  source ./load_rvm_environment
-  which ruby
-  spring rails server # no need for bundle exec
+### Returning to Work
+
+```bash
+  tat my_project   # attach to tmux session where you left off
+  ctrl-b c         # new tab for work
+  load_rvm         # load rvm environment
 ```
