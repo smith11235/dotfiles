@@ -51,6 +51,16 @@ Lowering the context switch cost of taking a break or working on multiple projec
   tat project_name # attach to a session by name: tmux attach -t 
 ```
 
+Github
+------
+
+```
+  ssh-keygen -t rsa -b 4096 -C smith11235@gmail.com
+  # enter, nopass
+  # enter, ~/.ssh/id_rsa
+  # add it to your personal settings ssh keys in github
+```
+
 Ruby
 ----
 
