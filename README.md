@@ -59,6 +59,9 @@ Github
   # enter, nopass
   # enter, ~/.ssh/id_rsa
   # add it to your personal settings ssh keys in github
+  
+  git config --global user.name "Michael Smith"
+  git config --global user.email smith11235@gmail.com
 ```
 
 Ruby
