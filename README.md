@@ -126,3 +126,102 @@ Starting work for a new ticket/task, start a branch off master
 
   gp                                  # push current branch to github
 ```
+
+## VIM - Mans Best Friend
+
+To edit code on a server, **without a mouse**
+
+```
+  vim some/file.txt
+```
+
+#### Command Mode
+
+By default you are in **command mode** and cannot edit the file. 
+
+In general most 'commands' will start by typeing **:**.
+
+##### Editing
+
+```
+  i            # enter insert mode before the cursor
+
+  ... edit text with your keyboard...
+
+  esc          # exit insert mode, back to command mode
+```
+
+Other ways to enter insert mode:
+
+```
+  shift+i    # start editing at beginning of line
+
+  a  # start editing after the cursor
+  shift+a    # start editing at end of line
+
+  o          # start editing a new line below the cursor
+  shift+o    # start editing a new line above the cursor
+```
+
+##### Basic Movement
+
+```
+  j  # down
+  k  # up
+  h  # left 
+  l  # right
+
+  w  # word forward
+  b  # word back
+```
+
+##### Working with Files in Tabs
+
+All of these are from command mode
+
+```
+  # open a new file in a tab
+  :tabe path/to/file.txt
+
+  # save your edits 
+  :w
+
+  # close a file/tab
+  :q
+
+  # switch tabs
+  ctrl+h     # tab left (h is the move left key!)
+  ctrl+l     # tab right (l is the move right key!)
+```
+
+##### Find Replace
+
+```
+  :%s/some-text-to-find/text-to-replace-it-with/gc
+```
+
+This is based on regex's, they are worth learning.
+
+Check out rubular.com
+
+##### Selecting Text - Copy/Cut/Paste
+
+```
+  v          # start a basic selection, use movement keys to select text
+  
+  shift+v    # start a full line selection, use up/down movement keys to select more lines
+
+  ctrl+shift+v # start a column/section selection, movement keys to select text
+
+  # when text is selected, you can 
+
+  # copy it (yank it)
+  y 
+
+  # or cut it (delete it)
+  d
+
+  # and then paste it elsewhere
+  p
+```
+
