@@ -233,3 +233,15 @@ Or if you just want to find something.
   n                               # to go to next match
 ```
 
+##### Other Useful Tidbits
+
+```
+  :set number         # show line numbers
+  :set nonumber       # hide line numbers (if you want to copy paste)
+
+  # copy paste form outside vim to inside vim
+  :set paste          # to paste from your computer to vim
+  i                   # enter insert mode
+  command-v           # normal mac-osx paste command
+  :set nopaste        # go back to normal editing mode
+```
