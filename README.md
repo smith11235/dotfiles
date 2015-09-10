@@ -225,3 +225,11 @@ Check out rubular.com
   p
 ```
 
+Or if you just want to find something.
+
+```
+  # type in a forward slash and then the text to find
+  /some-pattern-to-find  <enter>  # takes you to first match
+  n                               # to go to next match
+```
+
