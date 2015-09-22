@@ -15,8 +15,8 @@ curl -sSL https://get.rvm.io | bash -s stable
 source $rvm_path/scripts/rvm
 
 # Install Ruby 2.1.4, bundler, and anything in a possible Gemfile
-rvm install 2.1.4
-rvm use 2.1.4
+rvm install 2.2.1
+rvm use 2.2.1
 gem install bundler
 
 if test -f "Gemfile"; then bundle install; fi
