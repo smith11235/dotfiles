@@ -25,3 +25,8 @@ rvm use $ruby_version
 gem install bundler
 
 if test -f "Gemfile"; then bundle install; fi
+
+# If you want a global install
+export rvm_path=~/.rvm
+# add to ~/.profile
+source ~/.rvm/scripts/rvm
